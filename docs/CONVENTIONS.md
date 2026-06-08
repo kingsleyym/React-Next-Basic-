@@ -43,6 +43,16 @@ resets. Cross-app relationships live in `docs/PRODUCTS.md`.
 - Client components need `'use client'` at the top (anything with hooks, state,
   events, browser APIs). Pure presentational/server components don't.
 
+## File size & modularity (no monster files)
+
+- **One file, one job.** A row, a form, a card, a dialog → each its own file.
+- **Split at ~150 lines.** Past that, extract sub-components and move logic into a
+  hook. Pages must stay thin (compose, don't implement).
+- **One feature folder per dashboard tab / app screen**, each with its own
+  `components/`. A "tab" is a directory of small files, never one screen file.
+- Full structure for large surfaces (tabs, sub-tabs, dialogs, settings):
+  `docs/SCALING.md`.
+
 ## TypeScript
 
 - `strict` is on. No `any` — prefer `unknown` + narrowing.

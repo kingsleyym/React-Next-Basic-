@@ -2,7 +2,7 @@
 
 > The registry that survives time. After a long break, read this to remember which
 > apps exist, how they relate, and **where each feature's counterpart lives**. A
-> model forgets everything between sessions — this file does not.
+> model forgets everything between sessions — this file does not. Keep it updated.
 
 A **product** is one business idea. It can have several **surfaces** (apps):
 a dashboard, a consumer app, a marketing site. Surfaces are separate apps but
@@ -11,41 +11,46 @@ feature in the app to its counterpart in the dashboard.
 
 ---
 
-## Product: Starter (reference)
+## Product: Starter (the reference app)
 
 | Surface | App | Stack | Purpose |
 | ------- | --- | ----- | ------- |
-| Web     | `apps/web` | Next.js | Marketing/SEO + admin dashboard + gallery demo |
+| Web     | `apps/web` | Next.js (App Router) | Reference app: auth + a small gallery/stats demo, showing the conventions. |
 
-Shared domain in `core`: `User`, `Image`. No second surface yet.
+Shared domain in `core`: `User`, `Image`. Single surface for now.
+
+> `apps/web` exists to demonstrate the patterns. Copy it, or strip its
+> `features/*` to start a real product. Nothing else depends on its demo content.
 
 ---
 
-## Product: Loyalty (example multi-surface product)
+## Pattern: a multi-surface product (how to add one — not built yet)
 
-A points/loyalty product with a **separated** dashboard and store app.
+When you start a product with a separated dashboard **and** app, create them as
+sibling apps that share the same `core` domain. Example layout:
 
-| Surface   | App | Stack | Purpose |
-| --------- | --- | ----- | ------- |
-| Dashboard | `apps/loyalty-dashboard` | Next.js | Admin: send notifications, manage |
-| App       | `apps/loyalty-app` | Vite + React + Capacitor | Customer app, goes to the store |
+```
+apps/<product>-dashboard/   # Next.js — admin
+apps/<product>-app/         # Vite + React + Capacitor — store app
+packages/core/              # shared entities + repositories + services (the link)
+```
 
-Shared domain in `core`: `Notification` (entity + repository + `NotificationService`).
+Record it here with a **counterpart table** so the app↔dashboard relationship is
+never lost:
 
-### Feature counterparts (the app ↔ dashboard map)
+| Capability   | Dashboard side                  | App side                        | Shared in `core`        |
+| ------------ | ------------------------------- | ------------------------------- | ----------------------- |
+| _(example)_  | `features/broadcast` (sends)    | `features/inbox` (reads)        | `Notification` entity/service |
 
-| Capability    | Dashboard side                         | App side                            | Shared in `core`            |
-| ------------- | -------------------------------------- | ----------------------------------- | --------------------------- |
-| Notifications | `features/broadcast` (admin **sends**) | `features/inbox` (customer **reads**) | `Notification`, `NotificationService` |
-
-> Read this table before touching either side. It answers "why is it built this
-> way here?" → because it is the counterpart of the other surface, joined through
-> the shared domain. Keep it updated when you add a capability.
+> The rule: a feature exists "this way on this surface because it is the
+> counterpart of the other surface, joined through the shared domain." Write that
+> down here and in the feature's `context.md` the moment you build it.
 
 ---
 
 ## How to keep this alive
 
 - Add a product/surface here the moment you create it.
-- Every feature also has a local `context.md` (see `docs/_templates/feature-context.md`)
-  describing its own counterpart relationship and the reasons behind it.
+- Every feature also has a local `context.md` (see `docs/_templates/feature-context.md`).
+- Scaling one surface (many tabs/pages/dialogs/settings) without sprawl is covered
+  in `docs/SCALING.md`.

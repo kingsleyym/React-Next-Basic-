@@ -27,6 +27,29 @@ implementation for all of this is `apps/web/src/features/auth`.
 
 ---
 
+## Recipe: Add a dashboard section / tab (keep it small)
+
+See `docs/SCALING.md` for the full model. Steps:
+
+1. Add a route segment under the dashboard's route group:
+   `apps/<app>/src/app/(dashboard)/<section>/page.tsx` — **thin** (compose only).
+2. Create the feature `apps/<app>/src/features/<section>/` (standard shape:
+   `context.md`, `api/`, `hooks/`, `components/`). Real code lives here, in small
+   files (one component = one job, split at ~150 lines).
+3. Add the tab to the shared `(dashboard)/layout.tsx` nav.
+4. Sub-tabs (e.g. Settings): add a nested `layout.tsx` with a small sub-nav and one
+   thin page per sub-section.
+5. Lazy-load heavy panels with `dynamic()`.
+
+## Recipe: Fullscreen dialog
+
+- Deep-linkable (shareable URL, back closes it) → make it a **route**
+  (`…/new/page.tsx` or a parallel/intercepting route).
+- Transient (edit/confirm/quick form) → `Dialog` primitive + `useDisclosure`.
+- Either way the dialog body is a **feature component**, not inline page JSX.
+
+---
+
 ## Recipe: Form with validation
 
 1. Schema in the feature's `schema.ts` (Zod).

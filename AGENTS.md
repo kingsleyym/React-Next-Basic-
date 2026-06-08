@@ -44,6 +44,7 @@ invention. This keeps output consistent even for smaller/cheaper models.
 | Work on a feature (context first)   | that feature's `context.md`                   |
 | Pick a UI component / hook          | `docs/COMPONENTS.md` → `packages/ui`          |
 | Build a new feature                 | `docs/RECIPES.md` → "New CRUD feature"        |
+| Add a dashboard tab / keep UI small | `docs/SCALING.md`                             |
 | Add/change a data model             | `packages/core/src/entities`                  |
 | Read/write data                     | `packages/core/src/repositories`              |
 | Switch Firebase ↔ Supabase          | `docs/BACKEND-PROVIDERS.md`                   |

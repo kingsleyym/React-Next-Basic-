@@ -12,7 +12,8 @@ react-next-basic/
 │   ├── ARCHITECTURE.md       # layers, data flow, dependency rules, UI layering
 │   ├── PRODUCTS.md           # registry: which apps/surfaces exist & how they relate
 │   ├── _templates/           # feature-context.md template
-│   ├── CONVENTIONS.md        # naming, file layout, imports, git
+│   ├── SCALING.md            # big dashboards/apps: tabs, pages, dialogs, settings — kept small
+│   ├── CONVENTIONS.md        # naming, file layout, imports, git, file-size rules
 │   ├── COMPONENTS.md         # CATALOG: every UI component + hook + its props
 │   ├── RECIPES.md            # COOKBOOK: step-by-step to build common things
 │   ├── STATE-MANAGEMENT.md   # TanStack Query (server) + Zustand (client)
