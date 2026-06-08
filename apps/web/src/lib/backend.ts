@@ -1,4 +1,9 @@
-import { createMemoryBackend, UserRepository, type Backend } from '@repo/core';
+import {
+  createMemoryBackend,
+  UserRepository,
+  ImageRepository,
+  type Backend,
+} from '@repo/core';
 
 /**
  * THE single backend instance for this app. This is the ONE place that decides
@@ -18,3 +23,20 @@ export const backend: Backend = createMemoryBackend({
 
 // Repositories built on the active backend's db service.
 export const userRepository = new UserRepository(backend.db);
+export const imageRepository = new ImageRepository(backend.db);
+
+// Demo seed data so the gallery has content out of the box (memory backend only).
+// The memory db writes synchronously, so this is ready before the first query.
+const SEED_IMAGES = [
+  { title: 'Sunset Pier', authorName: 'Mara', likes: 128 },
+  { title: 'Mountain Fog', authorName: 'Jonas', likes: 87 },
+  { title: 'City Lights', authorName: 'Aylin', likes: 203 },
+  { title: 'Desert Road', authorName: 'Theo', likes: 64 },
+  { title: 'Ocean Calm', authorName: 'Mara', likes: 156 },
+  { title: 'Forest Trail', authorName: 'Lina', likes: 41 },
+  { title: 'Neon Alley', authorName: 'Aylin', likes: 175 },
+  { title: 'Snow Peak', authorName: 'Jonas', likes: 92 },
+];
+for (const img of SEED_IMAGES) {
+  void imageRepository.create({ ...img, url: null });
+}

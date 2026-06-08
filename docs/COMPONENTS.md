@@ -16,7 +16,7 @@
 | `Card` + `CardHeader/Title/Description/Content/Footer` | —                                          | Content container.                       |
 | `Badge`                           | `variant` (default/primary/success/destructive/outline)        | Status pills (role, state).              |
 | `Avatar`                          | `src`, `name`, `size`                                           | User picture w/ initials fallback.       |
-| `Skeleton`                        | `className`                                                     | Loading placeholders.                    |
+| `Skeleton`                        | `variant` (pulse/shimmer), `className`                          | Loading placeholders. `shimmer` = sliding-light effect. |
 | `EmptyState`                      | `icon`, `title`, `description`, `action`                        | Empty lists/sections.                    |
 | `Dialog`                          | `open`, `onClose`, `title`, `description`, `footer`             | Modals. Pair with `useDisclosure`.       |
 | `ImageUpload`                     | `storage`, `pathFor`, `onUploaded`, `value`, `maxSizeMb`        | Drag-drop image upload w/ preview + progress. |

@@ -35,6 +35,7 @@ export * from './entities';
 // Repositories
 export { BaseRepository } from './repositories/base.repository';
 export { UserRepository } from './repositories/user.repository';
+export { ImageRepository } from './repositories/image.repository';
 
 // Errors
 export { AppError, isAppError } from './errors';

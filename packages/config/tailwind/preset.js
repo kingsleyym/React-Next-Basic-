@@ -57,11 +57,15 @@ module.exports = {
         spin: {
           to: { transform: 'rotate(360deg)' },
         },
+        shimmer: {
+          '100%': { transform: 'translateX(100%)' },
+        },
       },
       animation: {
         'fade-in': 'fade-in 0.2s ease-out',
         'slide-up': 'slide-up 0.2s ease-out',
         spin: 'spin 1s linear infinite',
+        shimmer: 'shimmer 1.6s infinite',
       },
     },
   },
