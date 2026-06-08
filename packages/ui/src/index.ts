@@ -22,6 +22,7 @@ export { Badge, type BadgeProps } from './components/badge';
 export { Avatar, type AvatarProps } from './components/avatar';
 export { Skeleton } from './components/skeleton';
 export { EmptyState, type EmptyStateProps } from './components/empty-state';
+export { ErrorState, type ErrorStateProps } from './components/error-state';
 export { Dialog, type DialogProps } from './components/dialog';
 export { ImageUpload, type ImageUploadProps } from './components/image-upload';
 export { Pagination, type PaginationProps } from './components/pagination';

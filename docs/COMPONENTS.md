@@ -32,6 +32,7 @@ needs it** ("share on second use", never on spec). See docs/ARCHITECTURE.md.
 | `Avatar`                          | `src`, `name`, `size`                                           | User picture w/ initials fallback.       |
 | `Skeleton`                        | `variant` (pulse/shimmer), `className`                          | Loading placeholders. `shimmer` = sliding-light effect. |
 | `EmptyState`                      | `icon`, `title`, `description`, `action`                        | Empty lists/sections.                    |
+| `ErrorState`                      | `title`, `description`, `onRetry`, `retryLabel`, `icon`         | Failed loads; pairs with `error.tsx`.    |
 | `Dialog`                          | `open`, `onClose`, `title`, `description`, `footer`             | Modals. Pair with `useDisclosure`.       |
 | `ImageUpload`                     | `storage`, `pathFor`, `onUploaded`, `value`, `maxSizeMb`        | Drag-drop image upload w/ preview + progress. |
 | `Pagination`                      | `page`, `pageCount`, `canPrev/Next`, `onPrev/Next`             | Pager. Pair with `usePagination`.        |

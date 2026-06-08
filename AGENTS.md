@@ -35,6 +35,14 @@ invention. This keeps output consistent even for smaller/cheaper models.
    it). Read it first so you don't break a cross-surface decision; update it when
    you change the feature. Cross-app relationships are in `docs/PRODUCTS.md`.
 
+## How to read these docs (token discipline)
+
+Only **this file + `MAP.md`** are "always" reading — both are tiny and that's the
+whole baseline cost. Everything in `docs/` is **loaded per task, not by default**:
+open ONLY the row(s) in the table below that match what you're doing. Do not read
+all of `docs/`, and don't grep the repo when the table already points you to the
+file. One matching doc + the feature's `context.md` is usually enough.
+
 ## Where to look (do not grep blindly — use this)
 
 | I need to…                          | Read / edit                                  |

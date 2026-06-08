@@ -15,11 +15,8 @@
   "dependencies": {
     "zod": "^3.24.1"
   },
-  "optionalDependencies": {
-    "firebase": "^11.1.0",
-    "@supabase/supabase-js": "^2.47.10"
-  },
   "devDependencies": {
     "typescript": "^5.7.3"
-  }
+  },
+  "//": "Provider SDKs (firebase, @supabase/supabase-js) are intentionally NOT declared here. The adapters under src/**/adapters are excluded from the build; install the SDK in the consuming app only when you switch provider. See docs/BACKEND-PROVIDERS.md."
 }

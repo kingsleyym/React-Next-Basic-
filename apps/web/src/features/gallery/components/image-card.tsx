@@ -17,7 +17,6 @@ export function ImageCard({ image, onLike, pending }: ImageCardProps) {
   return (
     <div className="group relative aspect-square overflow-hidden rounded-2xl shadow-sm">
       {image.url ? (
-        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={image.url}
           alt={image.title}
