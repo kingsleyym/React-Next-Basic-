@@ -9,8 +9,11 @@ You maintain the design system in `packages/ui`. Read `docs/COMPONENTS.md` and
 
 Rules:
 
-- New primitives go in `packages/ui/src/components`, exported from
-  `packages/ui/src/index.ts`, and documented in `docs/COMPONENTS.md`.
+- Only **surface-neutral primitives** go in `packages/ui` (Button, Input, Dialog,
+  …), exported from `packages/ui/src/index.ts`, documented in `docs/COMPONENTS.md`.
+  Surface-specific compositions (tables, sidebars, bottom-nav, cards) belong in the
+  app (`apps/<app>/src/shared/components` or a feature) — see docs/ARCHITECTURE.md
+  "UI layering". Promote to a shared package only on second use.
 - Use semantic Tailwind classes that map to tokens (`bg-primary`,
   `text-muted-foreground`) — never hard-coded colors.
 - Use `cn()` for class merging. Add `'use client'` only when the component uses

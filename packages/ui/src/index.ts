@@ -26,7 +26,6 @@ export { Dialog, type DialogProps } from './components/dialog';
 export { ImageUpload, type ImageUploadProps } from './components/image-upload';
 export { Pagination, type PaginationProps } from './components/pagination';
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './components/tabs';
-export { DataTable, type Column, type DataTableProps } from './components/data-table';
 export {
   ToastProvider,
   useToast,

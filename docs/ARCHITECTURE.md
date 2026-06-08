@@ -40,6 +40,22 @@ arrow direction, you cannot create a mess.
 - UI is **never** hand-rolled when a `@repo/ui` component exists.
 - Swapping the backend touches **one file**: `apps/web/src/lib/backend.ts`.
 
+## UI layering: primitives shared, compositions local
+
+Different surfaces (a data dashboard vs. a consumer mobile app) need different
+UI, so we don't force shared components on them. Three tiers:
+
+- **Tokens** (`@repo/ui` `tokens.css`) — brand language. Shared, but a surface can
+  override them locally for a different feel.
+- **Primitives** (`@repo/ui`) — surface-neutral: Button, Input, Dialog, Toast,
+  Skeleton, FormField, … Shared. A button is a button everywhere.
+- **Compositions** — surface-specific: tables/sidebars (dashboard), bottom-nav/
+  cards (app). These live **in the app**, not in `@repo/ui`. Promote one to a
+  shared package only when a **second** app needs it.
+
+Sharing a package never forces usage: unused exports are tree-shaken, so an app
+pays nothing for primitives it doesn't import.
+
 ## Where the example apps fit
 
 - **web** (this repo): SEO site + dashboard. Next.js App Router for SSR/SEO.

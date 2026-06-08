@@ -17,11 +17,16 @@ tokens. Follow these exactly.
 
 ```
 features/<feature>/
+├── context.md                 # SHORT memory: purpose, app↔dashboard counterpart, reasons
 ├── api/<feature>.api.ts      # thin calls to repositories / backend services
 ├── hooks/use-<feature>.ts    # TanStack Query + Zustand orchestration
-├── components/                # feature UI (uses @repo/ui)
+├── components/                # feature UI (shared primitives + local compositions)
 └── schema.ts                  # Zod schemas for this feature's forms/inputs
 ```
+
+Every feature starts with a `context.md` (copy `docs/_templates/feature-context.md`).
+It is read first and updated last — the memory that survives long breaks and model
+resets. Cross-app relationships live in `docs/PRODUCTS.md`.
 
 ## Imports
 

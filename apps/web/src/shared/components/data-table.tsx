@@ -1,12 +1,15 @@
 import { type ReactNode } from 'react';
-import { cn } from '../lib/cn';
-import { Skeleton } from './skeleton';
-import { EmptyState } from './empty-state';
+import { cn, Skeleton, EmptyState } from '@repo/ui';
 
+/**
+ * Dashboard-local composition (NOT in @repo/ui). Tables are a dashboard pattern;
+ * the consumer app doesn't need them. This is the "primitives shared, compositions
+ * local" rule from docs/ARCHITECTURE.md in action — it is built from shared
+ * primitives (Skeleton, EmptyState) but lives with the surface that uses it.
+ */
 export interface Column<T> {
   key: string;
   header: string;
-  /** Render a cell. Defaults to the value at `key`. */
   cell?: (row: T) => ReactNode;
   className?: string;
 }
@@ -20,10 +23,6 @@ export interface DataTableProps<T> {
   onRowClick?: (row: T) => void;
 }
 
-/**
- * Minimal data table with built-in loading skeletons and empty state. For most
- * dashboards this is enough; extend the pattern rather than reinventing tables.
- */
 export function DataTable<T>({
   columns,
   rows,
@@ -36,7 +35,7 @@ export function DataTable<T>({
     return (
       <div className="space-y-2">
         {Array.from({ length: 5 }).map((_, i) => (
-          <Skeleton key={i} className="h-12 w-full" />
+          <Skeleton key={i} variant="shimmer" className="h-12 w-full" />
         ))}
       </div>
     );

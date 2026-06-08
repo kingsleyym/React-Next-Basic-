@@ -11,12 +11,11 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  DataTable,
   Skeleton,
   useToast,
-  type Column,
 } from '@repo/ui';
 import type { User } from '@repo/core';
+import { DataTable, type Column } from '@/shared/components/data-table';
 import { useAuth } from '@/features/auth/hooks/use-auth';
 import { userRepository } from '@/lib/backend';
 

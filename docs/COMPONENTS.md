@@ -1,7 +1,21 @@
 # Component Catalog (`@repo/ui`)
 
 > The menu. Before building any UI, pick from here. Import everything from
-> `@repo/ui`. If something is missing, add it to `@repo/ui` (not to an app).
+> `@repo/ui`.
+
+## What belongs in `@repo/ui` vs. an app (important)
+
+**Primitives are shared, compositions are local.** `@repo/ui` holds only
+surface-neutral primitives + tokens (a button is a button for both a dashboard and
+a mobile app). Surface-specific compositions live **in the app that uses them**:
+
+- Dashboard-typical (tables, sidebars, charts) → `apps/<app>/src/shared/components`.
+  Example: `apps/web/src/shared/components/data-table.tsx`.
+- App-typical (bottom nav, swipe cards, image cards) → that app's `features/`.
+  Example: `apps/web/src/features/gallery/components/image-card.tsx`.
+
+Promote a composition into a shared package **only when a second app actually
+needs it** ("share on second use", never on spec). See docs/ARCHITECTURE.md.
 
 ## Components
 
@@ -22,8 +36,11 @@
 | `ImageUpload`                     | `storage`, `pathFor`, `onUploaded`, `value`, `maxSizeMb`        | Drag-drop image upload w/ preview + progress. |
 | `Pagination`                      | `page`, `pageCount`, `canPrev/Next`, `onPrev/Next`             | Pager. Pair with `usePagination`.        |
 | `Tabs` + `TabsList/Trigger/Content` | `defaultValue`, `value`                                       | Tabbed sections.                         |
-| `DataTable`                       | `columns`, `rows`, `rowKey`, `loading`, `emptyTitle`, `onRowClick` | Tables w/ built-in loading + empty state. |
 | `ToastProvider` + `useToast`      | `toast({ title, description?, variant })`                      | Notifications. Provider already mounted. |
+
+> `DataTable` is **not** a shared primitive — it's a dashboard-local composition at
+> `apps/web/src/shared/components/data-table.tsx` (built from the shared `Skeleton`
+> + `EmptyState`). Copy that pattern in a dashboard; don't put it in `@repo/ui`.
 
 ## Hooks
 
