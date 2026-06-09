@@ -61,6 +61,8 @@ file. One matching doc + the feature's `context.md` is usually enough.
 | Naming / file conventions           | `docs/CONVENTIONS.md`                         |
 | The big picture / layers            | `docs/ARCHITECTURE.md`                        |
 | Make it fast                        | `docs/PERFORMANCE.md`                         |
+| Add tracking / analytics            | `docs/ANALYTICS.md`                           |
+| Write a test                        | `docs/TESTING.md`                             |
 | Work token-efficiently              | `docs/AI-WORKFLOW.md`                         |
 
 ## Commands
@@ -71,6 +73,7 @@ pnpm dev            # run all apps in dev
 pnpm build          # build everything
 pnpm typecheck      # type-check every package (run before you say "done")
 pnpm lint           # lint
+pnpm test           # run unit tests (vitest)
 ```
 
 ## Definition of done (check before finishing)

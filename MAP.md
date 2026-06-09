@@ -22,6 +22,8 @@ react-next-basic/
 │   ├── BACKEND-PROVIDERS.md  # Firebase ↔ Supabase swap guide
 │   ├── DESIGN-SYSTEM.md      # tokens, theming, animation (for later redesign)
 │   ├── PERFORMANCE.md        # load-time playbook
+│   ├── ANALYTICS.md          # provider-neutral tracking (Google adapter)
+│   ├── TESTING.md            # vitest setup + what/how to test
 │   └── AI-WORKFLOW.md        # how to work token-efficiently with any agent
 │
 ├── .claude/
@@ -35,6 +37,7 @@ react-next-basic/
 │   │       ├── db/             # DbService interface + adapters
 │   │       ├── storage/        # StorageService interface + adapters (file/image upload)
 │   │       ├── notifications/  # NotificationService interface + adapters (push)
+│   │       ├── analytics/      # AnalyticsService interface + memory/google adapters
 │   │       ├── entities/       # Zod schemas = single source of truth for models
 │   │       ├── repositories/   # data access (UserRepository, BaseRepository)
 │   │       ├── backend.ts      # createBackend('firebase'|'supabase') factory

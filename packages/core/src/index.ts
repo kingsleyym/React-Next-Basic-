@@ -22,12 +22,14 @@ export type {
   NotificationService,
   PushMessage,
 } from './notifications/notification.service';
+export type { AnalyticsService } from './analytics/analytics.service';
 
 // Memory adapters (for tests / custom bundles)
 export { createMemoryAuth } from './auth/memory.auth';
 export { createMemoryDb } from './db/memory.db';
 export { createMemoryStorage } from './storage/memory.storage';
 export { createMemoryNotifications } from './notifications/memory.notifications';
+export { createMemoryAnalytics } from './analytics/memory.analytics';
 
 // Entities (Zod schemas + inferred types)
 export * from './entities';

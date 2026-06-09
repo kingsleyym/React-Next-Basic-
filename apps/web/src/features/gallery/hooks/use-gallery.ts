@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import type { Image } from '@repo/core';
+import { analytics } from '@/lib/analytics';
 import { galleryApi } from '../api/gallery.api';
 
 const KEY = ['images'];
@@ -17,6 +18,7 @@ export function useGallery() {
     mutationFn: (id: string) => galleryApi.like(id),
     // Optimistic update: bump the like instantly, roll back on error.
     onMutate: async (id) => {
+      analytics.track('image_liked', { id });
       await queryClient.cancelQueries({ queryKey: KEY });
       const prev = queryClient.getQueryData<Image[]>(KEY);
       queryClient.setQueryData<Image[]>(KEY, (old) =>

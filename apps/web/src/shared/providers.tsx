@@ -5,6 +5,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ToastProvider } from '@repo/ui';
 import { makeQueryClient } from '@/lib/query-client';
 import { AuthListener } from '@/features/auth/components/auth-listener';
+import { AnalyticsPageView } from '@/shared/analytics-page-view';
 
 /**
  * App-wide client providers: TanStack Query (server state) + Toasts + the auth
@@ -17,6 +18,7 @@ export function Providers({ children }: { children: ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <ToastProvider>
         <AuthListener />
+        <AnalyticsPageView />
         {children}
       </ToastProvider>
     </QueryClientProvider>
