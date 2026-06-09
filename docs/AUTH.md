@@ -14,6 +14,10 @@ implementation (memory / Firebase / Supabase) is chosen in
 - **`useAuth`** (`features/auth/hooks/use-auth.ts`) — what components use. Returns
   `user`, `status`, `isAuthenticated`, `isAdmin`, and `login`/`signup`/`logout`
   mutations.
+- **`useRequireAuth`** (`features/auth/hooks/use-require-auth.ts`) — route guard
+  hook for protected pages (optionally `adminOnly`).
+- **`UserHeader`** (`features/auth/components/user-header.tsx`) — avatar +
+  greeting + sign-out, drop into any protected page.
 
 ## Flow
 
@@ -27,14 +31,14 @@ sign in  → AuthService.signInWithEmail
 ## Protecting a page (client)
 
 ```tsx
-const { status } = useAuth();
-useEffect(() => {
-  if (status === 'unauthenticated') router.replace('/login');
-}, [status]);
+const { isReady } = useRequireAuth();            // or useRequireAuth({ adminOnly: true })
+if (!isReady) return <Skeleton variant="shimmer" className="h-40" />;
+return <YourFeature />;
 ```
 
-See `app/dashboard/page.tsx`. For SSR/SEO-critical pages, also gate in Next
-middleware reading the provider session cookie (Firebase/Supabase SSR helpers).
+See `app/dashboard/page.tsx`. Don't hand-write guard effects — use the hook. For
+SSR/SEO-critical pages, also gate in Next middleware reading the provider session
+cookie (Firebase/Supabase SSR helpers).
 
 ## Roles / RBAC
 

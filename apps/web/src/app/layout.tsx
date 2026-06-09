@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Providers } from '@/shared/providers';
+// Side-effect import: validates env vars at startup (fail fast on bad config).
+import '@/lib/env';
 import './globals.css';
 
 export const metadata: Metadata = {

@@ -29,7 +29,13 @@ export function Avatar({ src, name, size = 40, className }: AvatarProps) {
       style={{ width: size, height: size }}
     >
       {src ? (
-        <img src={src} alt={name ?? ''} className="h-full w-full object-cover" />
+        <img
+          src={src}
+          alt={name ?? ''}
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover"
+        />
       ) : (
         initials(name)
       )}

@@ -12,7 +12,8 @@
 read `useAuth()`, they never call the provider. Server data stays in TanStack Query.
 
 **Key files:** `api/auth.api.ts`, `hooks/use-auth.ts`,
-`components/login-form.tsx`, `components/auth-listener.tsx`, `schema.ts`.
+`hooks/use-require-auth.ts` (route guard), `components/login-form.tsx`,
+`components/auth-listener.tsx`, `components/user-header.tsx`, `schema.ts`.
 
 **Gotchas:** This is the reference feature — other features copy its shape. The
 client `isAdmin`/route guards are UX only; real security is in provider rules.

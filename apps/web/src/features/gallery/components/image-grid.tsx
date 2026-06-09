@@ -29,7 +29,8 @@ export function ImageGrid() {
         <ImageCard
           key={image.id}
           image={image}
-          pending={like.isPending}
+          // Only the card being liked is pending — not the whole grid.
+          pending={like.isPending && like.variables === image.id}
           onLike={(id) => like.mutate(id)}
         />
       ))}

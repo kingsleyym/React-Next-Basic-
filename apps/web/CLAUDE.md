@@ -5,8 +5,10 @@ Next.js (App Router) reference app. Read root `AGENTS.md` first.
 ## Layout
 
 - `src/app/` — routes only. Pages stay THIN: they render a feature component.
-- `src/features/<feature>/` — feature modules: `api/`, `hooks/`, `components/`,
-  `schema.ts`. **`features/auth` is the reference** — copy its shape.
+- `src/features/<feature>/` — feature modules: `context.md`, `api/`, `hooks/`,
+  `components/`, `schema.ts`. **`features/auth` is the reference** — copy its shape.
+  Protected pages: `useRequireAuth()` from features/auth, then compose feature
+  components (see `app/dashboard/page.tsx` for the thin-page pattern).
 - `src/shared/` — app-wide: `providers.tsx`, `stores/` (Zustand).
 - `src/lib/` — singletons: `backend.ts` (the ONE backend instance + repositories),
   `query-client.ts`.
