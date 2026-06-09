@@ -15,7 +15,7 @@ feature in the app to its counterpart in the dashboard.
 
 | Surface | App | Stack | Purpose |
 | ------- | --- | ----- | ------- |
-| Web     | `apps/web` | Next.js (App Router) | Reference app: auth + a small gallery/stats demo, showing the conventions. |
+| Web     | `apps/web` | Next.js (App Router) | Reference app: auth (login, guard, header), members (protected dashboard), gallery/stats demo. |
 
 Shared domain in `core`: `User`, `Image`. Single surface for now.
 

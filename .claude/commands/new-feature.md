@@ -13,7 +13,8 @@ Produce, in order:
 4. Feature folder `apps/web/src/features/$ARGUMENTS/` with `context.md` (copy
    `docs/_templates/feature-context.md` and fill it in), `api/`, `hooks/`,
    `components/` (list + form), `schema.ts`.
-5. Thin page in `apps/web/src/app/$ARGUMENTS/page.tsx`.
+5. Thin page in `apps/web/src/app/$ARGUMENTS/page.tsx`. If protected, guard with
+   `useRequireAuth()` from `features/auth` (pattern: `app/dashboard/page.tsx`).
 6. If this feature has a counterpart on another surface, update `docs/PRODUCTS.md`.
 
 Use only `@repo/ui` components and `@repo/core` for data. Run `pnpm typecheck`

@@ -55,10 +55,13 @@ react-next-basic/
     ├── web/             # Next.js (App Router) — dashboard + SEO reference
     │   ├── CLAUDE.md         # app-specific agent notes
     │   └── src/
-    │       ├── app/          # routes (App Router)
-    │       ├── features/     # feature modules (auth = reference implementation)
-    │       ├── shared/       # app-level shared bits (providers, layout)
-    │       └── lib/          # app singletons (backend instance, query client)
+    │       ├── app/          # routes (App Router) — thin pages only
+    │       ├── features/     # feature modules, each with context.md
+    │       │   ├── auth/         # REFERENCE: login, useAuth, useRequireAuth, UserHeader
+    │       │   ├── members/      # dashboard members list (thin-page example)
+    │       │   └── gallery/      # demo: images + likes + stats
+    │       ├── shared/       # app-level shared: providers, stores, components (DataTable)
+    │       └── lib/          # app singletons: backend, query-client, env, analytics
     └── native/          # (planned) Vite + React + Capacitor app — see docs/ARCHITECTURE.md
 ```
 

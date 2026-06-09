@@ -98,13 +98,21 @@ Works the same whether storage is memory, Firebase or Supabase.
 
 ## Recipe: Protected / admin page
 
+Use the guard hook — never hand-write guard effects:
+
 ```tsx
-const { status, isAdmin } = useAuth();
-useEffect(() => {
-  if (status === 'unauthenticated') router.replace('/login');
-  else if (status === 'authenticated' && !isAdmin) router.replace('/');
-}, [status, isAdmin]);
+const { isReady } = useRequireAuth();            // admin: useRequireAuth({ adminOnly: true })
+if (!isReady) return <Skeleton variant="shimmer" className="h-40" />;
+return (
+  <main>
+    <UserHeader />
+    <YourFeatureComponent />
+  </main>
+);
 ```
+
+`useRequireAuth` + `UserHeader` come from `features/auth`. Reference:
+`app/dashboard/page.tsx` (thin page composing `features/members`).
 
 ---
 
