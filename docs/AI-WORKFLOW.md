@@ -9,6 +9,13 @@ Token cost ≈ how much you put in the context window. A 1M context is possible 
 absurdly expensive and slow. You almost never need more than a few thousand
 tokens if the project is predictable. This repo makes it predictable.
 
+## Brainstorming happens outside; only the plan comes in
+
+Open-ended ideation/research is cheaper and better in a dedicated tool (Cowork, a
+planning Skill, mobile, plan mode) — not by loading this repo. Do it there, produce
+a plan in the `docs/_templates/feature-plan.md` shape, drop it in `docs/plans/`, and
+the build agents here read that one small file. See `docs/plans/README.md`.
+
 ## What to load, per task (the minimum context)
 
 | Task                         | Load ONLY these                                                            |

@@ -6,6 +6,20 @@ implementation for all of this is `apps/web/src/features/auth`.
 
 ---
 
+## Recipe: Lifecycle — Plan → build → verify
+
+The full path from idea to shipped feature:
+
+1. **Plan (outside the repo):** brainstorm in Cowork / a planning Skill / plan mode,
+   using `docs/_templates/feature-plan.md` as the output shape. Save the result as
+   `docs/plans/<name>.md`. See `docs/plans/README.md`.
+2. **Build (here), one step at a time** from the plan's "Build steps":
+   `/new-entity <x>` → `/new-feature <x>` (follow "New CRUD feature" below).
+3. **Verify:** `pnpm typecheck && pnpm lint && pnpm test && pnpm build`, then run the
+   app. `reviewer` / `/code-review` for a final pass. CI re-runs all gates on push.
+
+---
+
 ## Recipe: New CRUD feature (e.g. "products")
 
 1. **Entity** — `packages/core/src/entities/product.ts`: Zod schema + inferred

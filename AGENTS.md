@@ -12,6 +12,15 @@ building blocks (UI, auth, database, storage, notifications) are **already
 defined**, so a feature request becomes _assembly from a known catalog_, not
 invention. This keeps output consistent even for smaller/cheaper models.
 
+## Lifecycle (where work comes from)
+
+`Brainstorm → Plan file → Build → Verify`. Ideation/research happens **outside**
+this repo (Cowork, a planning Skill, plan mode) and lands as a plan in
+`docs/plans/<name>.md` (shape: `docs/_templates/feature-plan.md`). Build agents
+(`feature-builder`) execute that plan here; `reviewer` checks; the verify gates
+(`pnpm typecheck && pnpm lint && pnpm test && pnpm build`) confirm it. See
+`docs/plans/README.md`.
+
 ## The golden rules (follow these or you will break conventions)
 
 1. **Never invent a UI component.** Check `docs/COMPONENTS.md` first. If a Button,
@@ -49,6 +58,7 @@ file. One matching doc + the feature's `context.md` is usually enough.
 | ----------------------------------- | -------------------------------------------- |
 | Understand the layout               | `MAP.md`                                      |
 | Know which apps exist & how related | `docs/PRODUCTS.md`                            |
+| Plan a new app/feature (handoff)    | `docs/plans/` + `docs/_templates/feature-plan.md` |
 | Work on a feature (context first)   | that feature's `context.md`                   |
 | Pick a UI component / hook          | `docs/COMPONENTS.md` → `packages/ui`          |
 | Build a new feature                 | `docs/RECIPES.md` → "New CRUD feature"        |

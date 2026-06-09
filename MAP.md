@@ -11,7 +11,8 @@ react-next-basic/
 ├── docs/                # all knowledge (the "why" and "how")
 │   ├── ARCHITECTURE.md       # layers, data flow, dependency rules, UI layering
 │   ├── PRODUCTS.md           # registry: which apps/surfaces exist & how they relate
-│   ├── _templates/           # feature-context.md template
+│   ├── plans/                # one plan file per app/feature (the brainstorm→build handoff)
+│   ├── _templates/           # feature-context.md + feature-plan.md templates
 │   ├── SCALING.md            # big dashboards/apps: tabs, pages, dialogs, settings — kept small
 │   ├── CONVENTIONS.md        # naming, file layout, imports, git, file-size rules
 │   ├── COMPONENTS.md         # CATALOG: every UI component + hook + its props
