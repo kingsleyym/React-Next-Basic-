@@ -1,4 +1,4 @@
-import type { ZodType, ZodTypeDef } from 'zod';
+import type { ZodType } from 'zod';
 import type { DbService, QueryOptions } from '../db/db.service';
 
 /**
@@ -11,7 +11,7 @@ export class BaseRepository<T extends { id: string }> {
   constructor(
     protected readonly db: DbService,
     protected readonly collection: string,
-    protected readonly schema: ZodType<T, ZodTypeDef, unknown>,
+    protected readonly schema: ZodType<T>,
   ) {}
 
   async findById(id: string): Promise<T | null> {
