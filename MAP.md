@@ -49,7 +49,7 @@ react-next-basic/
 │   │       ├── hooks/          # useToast, useDisclosure, useUpload, ...
 │   │       ├── tokens.css      # design tokens (CSS variables)
 │   │       └── index.ts
-│   └── config/          # shared eslint / tsconfig / tailwind presets
+│   └── config/          # shared eslint + tsconfig presets (Tailwind v4 = CSS-first, see ui/tokens.css)
 │
 └── apps/
     ├── web/             # Next.js (App Router) — dashboard + SEO reference

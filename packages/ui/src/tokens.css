@@ -1,7 +1,13 @@
 /**
- * Design tokens. THE single place to change the look & feel. A designer can
- * re-skin the whole product by editing these variables — no component code
- * changes. Import once in your app's global stylesheet. See docs/DESIGN-SYSTEM.md.
+ * Design tokens + Tailwind v4 theme mapping. THE single place to change the look.
+ *
+ * - The raw HSL values in :root / .dark are the brand tokens (edit these to re-skin).
+ * - The `@theme inline` block maps them to Tailwind color/radius/animation utilities
+ *   (`bg-primary`, `text-muted-foreground`, `rounded-lg`, `animate-shimmer`, …).
+ *   `inline` keeps the var() reference so swapping tokens under `.dark` works live.
+ *
+ * Imported once by an app's globals.css (which also does `@import "tailwindcss"`).
+ * See docs/DESIGN-SYSTEM.md.
  */
 :root {
   --background: 0 0% 100%;
@@ -57,4 +63,58 @@
   --border: 217 33% 20%;
   --input: 217 33% 20%;
   --ring: 224 76% 60%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-slide-up: slide-up 0.2s ease-out;
+  --animate-shimmer: shimmer 1.6s infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }

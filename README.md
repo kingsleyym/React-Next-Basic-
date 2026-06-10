@@ -30,7 +30,7 @@ apps/web        Next.js (App Router) — dashboard + SEO reference app
 apps/native     (planned) Vite + React + Capacitor for the App-Store app
 packages/core   provider-neutral backend (auth, db, storage, notifications) + entities
 packages/ui     design system: components + hooks + tokens
-packages/config  shared tsconfig / tailwind / eslint presets
+packages/config  shared tsconfig / eslint presets
 docs/           architecture, conventions, component catalog, recipes, workflow
 ```
 
