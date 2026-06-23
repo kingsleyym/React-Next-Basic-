@@ -28,6 +28,8 @@ export interface DbService {
   create<T>(collection: string, data: T, id?: string): Promise<WithId<T>>;
   update<T>(collection: string, id: string, data: Partial<T>): Promise<void>;
   remove(collection: string, id: string): Promise<void>;
+  /** Returns the number of documents matching the options. */
+  count(collection: string, options?: QueryOptions): Promise<number>;
   /** Realtime subscription. Returns an unsubscribe function. */
   subscribe<T>(
     collection: string,

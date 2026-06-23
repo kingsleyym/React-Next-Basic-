@@ -17,9 +17,16 @@ import {
  *   const app = initializeApp({ ...env });
  *   export const backend = { auth: createFirebaseAuth(app), db: ..., ... };
  */
+
 export const backend: Backend = createMemoryBackend({
-  seedUsers: [{ email: 'demo@example.com', password: 'password', name: 'Demo User' }],
+  seedUsers: [
+    { email: 'demo@example.com', password: 'password', name: 'Demo User' },
+    { email: 'luca@test.com', password: 'passwort', name: 'Luca' },
+  ],
 });
+
+// Repositories built on the active backend's db service.
+// ... rest of code ...
 
 // Repositories built on the active backend's db service.
 export const userRepository = new UserRepository(backend.db);

@@ -89,6 +89,25 @@ export function createMemoryDb(): DbService {
       col(name).delete(id);
       notify(name);
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    async count(name: string, options?: QueryOptions) {
+      return query<unknown>(name, options).length;
+    },
     subscribe<T>(
       name: string,
       options: QueryOptions,
