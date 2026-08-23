@@ -37,6 +37,11 @@ export class BaseRepository<T extends { id: string }> {
     await this.db.remove(this.collection, id);
   }
 
+  /** Counts matching rows without transferring them. */
+  async count(options?: QueryOptions): Promise<number> {
+    return this.db.count(this.collection, options);
+  }
+
   /** Realtime list subscription. Returns an unsubscribe function. */
   subscribe(options: QueryOptions, callback: (items: T[]) => void): () => void {
     return this.db.subscribe<T>(this.collection, options, (rows) =>

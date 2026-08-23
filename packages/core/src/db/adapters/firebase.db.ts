@@ -9,6 +9,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  getCountFromServer,
   setDoc,
   addDoc,
   updateDoc,
@@ -69,6 +70,12 @@ export function createFirebaseDb(app: FirebaseApp): DbService {
     },
     async remove(name: string, id: string) {
       await deleteDoc(doc(db, name, id));
+    },
+    async count(name: string, options?: QueryOptions) {
+      const snap = await getCountFromServer(
+        fsQuery(fsCollection(db, name), ...constraints(options)),
+      );
+      return snap.data().count;
     },
     subscribe<T>(name: string, options: QueryOptions, callback: (items: WithId<T>[]) => void) {
       const q = fsQuery(fsCollection(db, name), ...constraints(options));

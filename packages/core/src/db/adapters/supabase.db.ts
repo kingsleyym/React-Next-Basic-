@@ -56,6 +56,15 @@ export function createSupabaseDb(client: SupabaseClient): DbService {
     async remove(table: string, id: string) {
       await client.from(table).delete().eq('id', id);
     },
+    async count(table: string, options?: QueryOptions) {
+      // head: true -> nur der Zaehler, keine Zeilen ueber die Leitung.
+      const { count, error } = await applyOptions(
+        client.from(table).select('*', { count: 'exact', head: true }),
+        options,
+      );
+      if (error) throw new AppError('unknown', error.message, error);
+      return count ?? 0;
+    },
     subscribe<T>(table: string, options: QueryOptions, callback: (items: WithId<T>[]) => void) {
       const load = () => this.list<T>(table, options).then(callback);
       void load();
