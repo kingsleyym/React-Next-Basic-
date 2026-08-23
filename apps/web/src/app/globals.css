@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+@import '@repo/ui/tokens.css';
+
+/* Tailwind v4 auto-detects this app's sources, but not the linked @repo/ui
+   package — scan it explicitly so its class names are generated. */
+@source '../../../../packages/ui/src';
+
+/* Class-based dark mode (toggle `.dark` on <html>). */
+@custom-variant dark (&:is(.dark *));
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
